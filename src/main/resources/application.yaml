@@ -1,0 +1,30 @@
+server:
+  port: 8070
+
+management:
+  server:
+    port: 8082
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+feign:
+  client:
+    config:
+      default:
+        default-request-headers:
+          X-Goog-Api-Key: ${API_KEY}
+          X-Goog-FieldMask: '*'
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:example@localhost:27017
+      database: places-db
+
+google-places-api:
+  url: https://places.googleapis.com/v1
+  language: tr
